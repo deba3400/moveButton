@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            font-family: "Gantari", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+
+            background-color: rgb(45, 40, 40);
+
+        }
+        h1 {
+            color: white;
+        }
+        .container h1::after {
+            content: '❤️';
+        }
+        .container {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #movingButton {
+            position: absolute;
+            width:80px;
+            height: 30px;
+            margin-left: 40px;
+            font-size: medium;
+            font-weight: 600;
+            background-color: red;
+
+        }
+        .button--yes{
+            position: relative;
+            width:80px;
+            height: 30px;
+            margin-right: 10px;
+            font-size: medium;
+            font-weight: 600;
+            background-color: green;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Do you love me?  </h1>
+
+        <button class="button--yes" onclick="openPopup()">Yes</button>
+        <button id="movingButton" onmouseover="moveButton()">No</button>
+
+    </div>
+
+    <script>
+        function moveButton() {
+            var button = document.getElementById('movingButton');
+            var maxX = window.innerWidth - button.offsetWidth;
+            var maxY = window.innerHeight - button.offsetHeight;
+
+            var interval = setInterval(function () {
+                var newX = Math.floor(Math.random() *500)+1;
+                var newY = Math.floor(Math.random() *500)+1;
+
+                button.style.left = newX + 'px';
+                button.style.top = newY + 'px';
+            }, 50); // Change the interval as needed (in milliseconds)
+
+            button.onmouseout = function () {
+                clearInterval(interval);
+            };
+        }
+
+
+        function openPopup() {
+            var popupWidth = 500;
+            var popupHeight = 400;
+            var left = (window.innerWidth - popupWidth) / 2;
+            var top = (window.innerHeight - popupHeight) / 2;
+            var popupFeatures = `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`;
+
+           var popup= window.open("", '_blank', popupFeatures);
+           popup.document.write("<h1>I love you sooooooooo much amar dustu ta ❤️❤️❤️❤️❤️❤️❤️❤️</h1>");
+           popup.document.close();
+        }
+
+        
+        
+    </script>
+</body>
+</html>
